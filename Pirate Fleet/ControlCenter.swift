@@ -81,19 +81,24 @@ struct Ship {
 }
 
 // TODO: Change Cell protocol to PenaltyCell and add the desired properties
-protocol Cell {
+protocol PenaltyCell {
     var location: GridLocation {get}
+    var guaranteesHit: Bool {get}
+    var penaltyText: String {get}
 }
 
 // TODO: Adopt and implement the PenaltyCell protocol
-struct Mine: Cell {
+struct Mine: PenaltyCell {
     let location: GridLocation
-
+    let guaranteesHit = false
+    let penaltyText = "Boom a mine!"
 }
 
 // TODO: Adopt and implement the PenaltyCell protocol
-struct SeaMonster: Cell {
+struct SeaMonster: PenaltyCell {
     let location: GridLocation
+    let guaranteesHit = true
+    let penaltyText = "SeaMonster"
 }
 
 class ControlCenter {
@@ -101,8 +106,9 @@ class ControlCenter {
     func placeItemsOnGrid(_ human: Human) {
         
 //        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true, isWooden: false, hitTracker: HitTracker())
-//        human.addShipToGrid(smallShip)
-        human.addShipToGrid(Ship.init(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true))
+       
+        let smallShip = Ship.init(length: 2, isVertical: true, isWooden: false, location: GridLocation(x: 3, y:4))
+        human.addShipToGrid(smallShip)
         print("smallShip!")
 //        
 ////        let mediumShip1 = Ship(length: 3, location: GridLocation(x: 0, y: 0), isVertical: false, isWooden: false, hitTracker: HitTracker())

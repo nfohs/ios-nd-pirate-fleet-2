@@ -23,7 +23,7 @@ class Player {
     
     var playerDelegate: PlayerDelegate?
     var playerType: PlayerType
-    var lastHitPenaltyCell: Cell? = nil
+    var lastHitPenaltyCell: PenaltyCell? = nil
     var numberOfMisses: Int = 0
     var numberOfHits: Int = 0
     
