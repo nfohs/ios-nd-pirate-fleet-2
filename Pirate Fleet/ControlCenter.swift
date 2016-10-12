@@ -68,6 +68,7 @@ struct Ship {
         self.location = location
         self.hitTracker = HitTracker()
         self.isVertical = true
+        self.isWooden = true
     }
     
     init(length: Int, isVertical: Bool, isWooden: Bool, location: GridLocation) {
