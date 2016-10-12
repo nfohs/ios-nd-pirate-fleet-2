@@ -172,21 +172,21 @@ extension PirateFleetViewController: PlayerDelegate {
 
             
             // mine penalty
-             if let _ = penaltyCell as? Mine {
+             if let mine = penaltyCell as? Mine {
                 
                 let alertMessage = (player.playerType == .human) ? Settings.Messages.HumanHitMine : Settings.Messages.ComputerHitMine
 
-                createAlertWithTitle("BOOM!", message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
+                createAlertWithTitle(mine.penaltyText, message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
                     self.dismissPenaltyAlert(player)
                 })
             }
                 
             // seamonster penalty
-            else if let _ = penaltyCell as? SeaMonster {
+            else if let seamonster = penaltyCell as? SeaMonster {
                 
                 let alertMessage = (player.playerType == .human) ? Settings.Messages.HumanHitMonster : Settings.Messages.ComputerHitMonster
                 
-                createAlertWithTitle("Whoa, Nessie!", message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
+                createAlertWithTitle(seamonster.penaltyText, message: alertMessage, actionMessage: Settings.Messages.DismissAction, completionHandler: { (action) in
                     self.dismissPenaltyAlert(player)
                 })
             }

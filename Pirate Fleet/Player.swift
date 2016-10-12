@@ -215,18 +215,17 @@ class Player {
         for (requiredShipType, requiredNumber) in Settings.RequiredShips {
             for _ in 0..<requiredNumber {
                 let shipLength = requiredShipType.rawValue
-                
+                //I wanted the 'wooden' property to be random here, so i copied the vertical randomization
+
                 var shipLocation = RandomGridLocation()
                 var vertical = Int(arc4random_uniform(UInt32(2))) == 0 ? true : false
                 var wooden = Int(arc4random_uniform(UInt32(2))) == 0 ? true : false
-//                var ship = Ship(length: shipLength, location: shipLocation, isVertical: vertical, isWooden: false, hitTracker: HitTracker())
                 var ship = Ship(length: shipLength, isVertical: vertical, isWooden: wooden, location: shipLocation)
                 
                 while !gridViewController.addShip(ship, playerType: .computer) {
                     shipLocation = RandomGridLocation()
                     vertical = Int(arc4random_uniform(UInt32(2))) == 0 ? true : false
                     wooden = Int(arc4random_uniform(UInt32(2))) == 0 ? true : false
-//                    ship = Ship(length: shipLength, location: shipLocation, isVertical: vertical, isWooden: false, hitTracker: HitTracker())
                     ship = Ship(length: shipLength, isVertical: vertical, isWooden: wooden, location: shipLocation)
                 }
             }

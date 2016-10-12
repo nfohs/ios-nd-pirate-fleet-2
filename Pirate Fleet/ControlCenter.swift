@@ -90,12 +90,13 @@ protocol PenaltyCell {
 // TODO: Adopt and implement the PenaltyCell protocol
 struct Mine: PenaltyCell {
     let location: GridLocation
-    var guaranteesHit = false
-    var penaltyText = "Boom a mine!"
+    let guaranteesHit: Bool
+    let penaltyText: String
     
     init(location: GridLocation, penaltyText: String) {
         self.location = location
         self.penaltyText = penaltyText
+        self.guaranteesHit = false
     }
     
     init(location: GridLocation, penaltyText: String, guaranteesHit: Bool) {
@@ -109,7 +110,7 @@ struct Mine: PenaltyCell {
 struct SeaMonster: PenaltyCell {
     let location: GridLocation
     let guaranteesHit = true
-    let penaltyText = "SeaMonster"
+    let penaltyText = "RAWR a Sea Monster!"
 }
 
 class ControlCenter {
