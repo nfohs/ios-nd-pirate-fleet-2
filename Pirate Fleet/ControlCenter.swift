@@ -47,7 +47,19 @@ struct Ship {
     var hitTracker: HitTracker
 // TODO: Add a getter for sunk. Calculate the value returned using hitTracker.cellsHit.
     var sunk: Bool {
-        return false
+        get {
+            var sunkStatus: Bool = false
+            var hitCells = [GridLocation]()
+            for (key, value) in hitTracker.cellsHit {
+                if value == true {
+                    hitCells.append(key)
+                }
+            }
+            if hitCells.count == self.length{
+                sunkStatus = true
+            }
+            return sunkStatus
+        }
     }
 
 // TODO: Add custom initializers
